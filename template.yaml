@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: ge-docs-template
-  title: Documentation Template
+  title: GE Documentation Template
   description: Create a new standalone documentation project
   tags:
     - recommended
