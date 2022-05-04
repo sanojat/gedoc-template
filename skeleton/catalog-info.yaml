@@ -10,5 +10,5 @@ spec:
   type: documentation
   lifecycle: experimental
   owner: ${{values.owner | dump}}
-  domain: "mydomain1"
-  system: "mysystem1"
+  domain: ${{values.pdomain | dump}}
+  system: ${{values.psystem | dump}}

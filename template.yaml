@@ -72,6 +72,8 @@ spec:
           description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
+          pdomain: ${{ parameters.prjdomain }}
+          psystem: ${{ parameters.prjsystem }}
 
     - id: publish
       name: Publish
