@@ -43,7 +43,7 @@ spec:
           type: string
           description: Domain of project
         prjsystem:
-          title: Description
+          title: System
           type: string
           description: System of project
     - title: Choose a location
