@@ -17,6 +17,8 @@ spec:
       required:
         - name
         - description
+        - prjdomain
+        - prjsystem
       properties:
         name:
           title: Name
