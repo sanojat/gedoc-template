@@ -1,15 +1,15 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: ge-docs-template
-  title: GE Documentation Template
+  name: docs-template
+  title: Documentation Template
   description: Create a new standalone documentation project
   tags:
     - recommended
     - techdocs
     - mkdocs
 spec:
-  owner: ge/techdocs-core
+  owner: backstage/techdocs-core
   type: documentation
 
   parameters:
@@ -17,8 +17,6 @@ spec:
       required:
         - name
         - description
-        - projectdomain
-        - projectsystem
       properties:
         name:
           title: Name
@@ -38,14 +36,25 @@ spec:
           ui:options:
             allowedKinds:
               - Group
-        projectdomain:
+        prjdomain:
           title: Domain
           type: string
-          description: The component belongs to this domain
-        projectsystem:
-          title: System
+          description: Domain of project
+        prjsystem:
+          title: Description
           type: string
-          description: The component belongs to this system   
+          description: System of project
+    - title: Choose a location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
 
   # This template is meant to be used on top of an existing template.
   # By adding the following and fetching from an absolute URL you can
@@ -59,7 +68,7 @@ spec:
         values:
           name: ${{ parameters.name }}
           description: ${{ parameters.description }}
-          destination: ${{ parameters.projectdomain +"-"+ parameters.projectsystem + "-" + parameters.name | parseRepoUrl }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
 
     - id: publish
@@ -68,7 +77,7 @@ spec:
       input:
         allowedHosts: ["github.com"]
         description: This is ${{ parameters.name }}
-        repoUrl: ${{ parameters.projectdomain +"-"+ parameters.projectsystem + "-" + parameters.name }}
+        repoUrl: ${{ parameters.repoUrl }}
 
     - id: register
       name: Register
