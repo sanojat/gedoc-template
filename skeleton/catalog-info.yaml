@@ -10,3 +10,5 @@ spec:
   type: documentation
   lifecycle: experimental
   owner: ${{values.owner | dump}}
+  domain: ${{values.prjdomain | dump}}
+  system: ${{values.prjsystem | dump}}
