@@ -70,7 +70,7 @@ spec:
         values:
           name: ${{ parameters.name }}
           description: ${{ parameters.description }}
-          destination: ${{ parameters.repoUrl +"&"+ "domain=" + parameters.prjdomain + "&" + "system=" + parameters.prjsystem | parseRepoUrl }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
 
     - id: publish
@@ -79,7 +79,7 @@ spec:
       input:
         allowedHosts: ["github.com"]
         description: This is ${{ parameters.name }}
-        repoUrl: ${{ parameters.repoUrl +"&"+ "domain=" + parameters.prjdomain + "&" + "system=" + parameters.prjsystem }}
+        repoUrl: ${{ parameters.repoUrl }}
 
     - id: register
       name: Register
